@@ -1,0 +1,58 @@
+<h1>(GeekRizin)</h1>
+<h3>新規rizin</h3>
+<%= form_for @rizin do |f| %>
+
+
+  <div class="field">
+    <%= f.label :brand1 %>
+    <%= f.text_field :brand1, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price1 %>
+    <%= f.number_field :price1, :size => 10 %>
+  </div>
+  
+  
+  <div class="field">
+    <%= f.label :name1 %>
+    <%= f.text_field :brand1, :size => 30 %>
+  </div>
+  <div class="field">
+  <%= f.label :image1 %>
+  <%= f.file_field :image1 %>
+</div>
+
+<div id="new-image"></div>
+
+
+
+
+  <%= f.submit "Rizin投稿する" %>
+<% end %>
+
+<%= link_to "Rizin一覧に戻る", rizins_path %>
+
+<script>if (document.URL.match(/new/)){
+  document.addEventListener('DOMContentLoaded', () => {
+    const createImageHTML = (blob) => {
+      const imageElement = document.getElementById('new-image');
+      const blobImage = document.createElement('img');
+      blobImage.setAttribute('class', 'new-img')
+      blobImage.setAttribute('src', blob);
+      imageElement.appendChild(blobImage);
+    };
+
+    document.getElementById('rizin_image1').addEventListener('change', (e) => {
+      const imageContent = document.querySelector('img');
+      if (imageContent){
+        imageContent.remove();
+      }
+
+      const file = e.target.files[0];
+      const blob = window.URL.createObjectURL(file);
+      createImageHTML(blob);
+    });
+  });
+}
+</script>

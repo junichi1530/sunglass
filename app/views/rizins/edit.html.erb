@@ -1,0 +1,30 @@
+<%= form_for @rizin do |f| %>
+
+
+    <div class="field">
+      <%= f.label :brand1 %>
+      <%= f.text_field :brand1, :size => 30 %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :price1 %>
+      <%= f.number_field :price1, :size => 10 %>
+    </div>
+    
+    
+    <div class="field">
+      <%= f.label :name1 %>
+      <%= f.text_field :brand1, :size => 30 %>
+    </div>
+    <div class="field">
+    <%= f.label :image1 %>
+    <%= f.file_field :image1 %>
+  </div>
+  
+  
+  
+  
+  
+  
+    <%= f.submit "Rizin投稿する" %>
+  <% end %>

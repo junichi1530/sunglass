@@ -1,0 +1,2 @@
+module RizinsHelper
+end

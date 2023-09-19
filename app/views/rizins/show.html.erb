@@ -1,0 +1,30 @@
+<h1>GeekTwitter</h1>
+<h3>Rizin詳細</h3>
+<div class="rizin">
+  <p><%= @rizin.name1 %></p>
+  <p><%= @rizin.brand1 %></p>
+  <p><%= @rizin.price1 %></p>
+  <p><%= @rizin.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@rizin) %>
+        <%= link_to rizin_like_path(@rizin), method: :delete do %>
+            <i class="fa-solid fa-thumbs-up"></i><%= @rizin.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to rizin_likes_path(@rizin), method: :post do %>
+            <i class="fa-solid fa-thumbs-up"></i><%= @rizin.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+    <i class="fa-solid fa-thumbs-up"></i><%= @rizin.likes.count %>
+    <% end %>
+  <%= link_to "編集する", edit_rizin_path(@rizin.id) %>
+  <%= button_to "削除する", rizin_path(@rizin.id), method: :delete %>
+  <%= link_to "rizin一覧に戻る", rizins_path %>
+  </div>
+
+<h2>いいねしたユーザー</h2>
+<% @rizin.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
