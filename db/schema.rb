@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2023_09_09_100043) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.string "image"
     t.string "image1"
   end
 
